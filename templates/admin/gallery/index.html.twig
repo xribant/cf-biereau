@@ -1,0 +1,60 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Galeries{% endblock %}
+
+{% block sectionTitle %}Gestion des galeries photos{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content table-responsive table-full-width">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_gallery_new') }}">Créer</a>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Titre</th>
+                                    <th>Images</th>
+                                    <th>Créé</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for gallery in galleries %}
+                                    <tr>
+                                        <td class="text-center">{{ loop.index }}</td>
+                                        <td>{{ gallery.title }}</td>
+                                        <td>{{ gallery.images|length }}</td>
+                                        <td>{{ gallery.createdAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                        <td class="td-actions text-right">
+                                            <a href="{{ path('app_gallery_edit', {uid: gallery.uid}) }}" rel="tooltip" title="Modifier" class="btn btn-success btn-simple btn-xs">
+                                                <i class="ti-pencil-alt"></i>
+                                            </a>
+                                            <form style="display: inline-block;" method="post" action="{{ path('app_gallery_delete', {'uid': gallery.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cette galerie?');">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ gallery.uid) }}">
+                                                <button rel="tooltip" title="Supprimer" class="btn btn-danger btn-simple btn-xs"><i class="ti-close"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Pas de galeries photos pour le moment...</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Admin CF Biereau | {% block title %}{% endblock %}</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="{{ asset('admin/assets/css/paper-dashboard.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('admin/assets/css/styles.css') }}" rel="stylesheet"/>
+
+    <!--  Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('admin/assets/css/themify-icons.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-background-color="brown" data-active-color="danger">
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+        <div class="logo">
+            <a href="{{ path('app_admin') }}" class="simple-text logo-mini">
+                ACF
+            </a>
+
+            <a href="{{ path('app_admin') }}" class="simple-text logo-normal">
+                ADMIN CF
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <div class="user">
+                <div class="photo">
+                    <img src="{{ asset('admin/assets/img/faces/face-0.jpg') }}" />
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+	                       <span>
+							   	{{ app.user.firstName }} {{ app.user.lastName }}
+							   	<b class="caret"></b>
+						   </span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="{{ path('app_user_edit', {'uid': app.user.uid} ) }}">
+                                    <span class="sidebar-mini">Ep</span>
+                                    <span class="sidebar-normal">Edit Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_logout') }}">
+                                    <span class="sidebar-mini">D</span>
+                                    <span class="sidebar-normal">Déconnexion</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="{{ path('app_user_index') }}">
+                        <i class="ti-user"></i>
+                        <p>Utilisateurs</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_event_index') }}">
+                        <i class="ti-calendar"></i>
+                        <p>Evènements</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_gallery_index') }}">
+                        <i class="ti-camera"></i>
+                        <p>Galeries Photos</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">{% block sectionTitle %}{% endblock %}</a>
+                </div>
+            </div>
+
+        </nav>
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> - Comité des fêtes du collège du Biéreau de Louvain-La-Neuve
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
+<script src="{{ asset('admin/assets/js/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/js/perfect-scrollbar.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+<!--  Forms Validations Plugin -->
+<script src="{{ asset('admin/assets/js/jquery.validate.min.js') }}"></script>
+
+<!-- Promise Library for SweetAlert2 working on IE -->
+<script src="{{ asset('admin/assets/js/es6-promise-auto.min.js') }}"></script>
+
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="{{ asset('admin/assets/js/moment.min.js') }}"></script>
+
+<!--  Date Time Picker Plugin is included in this js file -->
+<script src="{{ asset('admin/assets/js/bootstrap-datetimepicker.js') }}"></script>
+<script src="{{ asset('admin/assets/js/locales/fr.js') }}"></script>
+
+<!--  Select Picker Plugin -->
+<script src="{{ asset('admin/assets/js/bootstrap-selectpicker.js') }}"></script>
+
+<!--  Switch and Tags Input Plugins -->
+<script src="{{ asset('admin/assets/js/bootstrap-switch-tags.js') }}"></script>
+
+<!-- Circle Percentage-chart -->
+<script src="{{ asset('admin/assets/js/jquery.easypiechart.min.js') }}"></script>
+
+<!--  Charts Plugin -->
+<script src="{{ asset('admin/assets/js/chartist.min.js') }}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{{ asset('admin/assets/js/bootstrap-notify.js') }}"></script>
+
+<!-- Sweet Alert 2 plugin -->
+<script src="{{ asset('admin/assets/js/sweetalert2.js') }}"></script>
+
+<!-- Vector Map plugin -->
+<script src="{{ asset('admin/assets/js/jquery-jvectormap.js') }}"></script>
+
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+<!-- Wizard Plugin    -->
+<script src="{{ asset('admin/assets/js/jquery.bootstrap.wizard.min.js') }}"></script>
+
+<!--  Bootstrap Table Plugin    -->
+<script src="{{ asset('admin/assets/js/bootstrap-table.js') }}"></script>
+
+<!--  Plugin for DataTables.net  -->
+<script src="{{ asset('admin/assets/js/jquery.datatables.js') }}"></script>
+
+<!--  Full Calendar Plugin    -->
+<script src="{{ asset('admin/assets/js/fullcalendar.min.js') }}"></script>
+
+<!-- Paper Dashboard PRO Core javascript and methods for Demo purpose -->
+<script src="{{ asset('admin/assets/js/paper-dashboard.js') }}"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('.datepicker').datetimepicker({
+            locale: 'fr',
+            format: 'L'
+        });
+    });
+    $('.timepicker').datetimepicker({
+        format: 'H:mm',    // use this format if you want the 24hours timepicker
+        //format: 'h:mm A',    //use this format if you want the 12hours timpiecker with AM/PM toggle
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down",
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            today: 'fa fa-screenshot',
+            clear: 'fa fa-trash',
+            close: 'fa fa-remove'
+        }
+
+    });
+</script>
+
+{% block javascripts %}
+{% endblock %}
+
+</body>
+</html>

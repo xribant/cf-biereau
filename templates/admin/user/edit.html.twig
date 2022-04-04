@@ -1,0 +1,22 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Modifier un utilisateur{% endblock %}
+
+{% block sectionTitle %}Modification du profil de {{ user.firstName }} {{ user.lastName }}{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        {{ include('admin/user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

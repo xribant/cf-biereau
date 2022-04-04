@@ -1,0 +1,13 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Modifier une galerie{% endblock %}
+
+{% block sectionTitle %}Modification d'une galerie photo{% endblock %}
+
+{% block content %}
+    {{ include('admin/gallery/_form.html.twig', {'button_label': 'Modifier'}) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('admin/assets/js/images.js') }}"></script>
+{% endblock %}

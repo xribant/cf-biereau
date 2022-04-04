@@ -1,0 +1,62 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Evènements{% endblock %}
+
+{% block sectionTitle %}Gestion des évènements{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content table-responsive table-full-width">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_event_new') }}">Nouveau</a>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Titre</th>
+                                    <th>Date de l'évènement</th>
+                                    <th>Créé</th>
+                                    <th>Modifié</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for event in events %}
+                                    <tr>
+                                        <td class="text-center">{{ loop.index }}</td>
+                                        <td>{{ event.title }}</td>
+                                        <td>{{ event.scheduledAt|format_datetime('full', 'none',locale='fr') }}</td>
+                                        <td>{{ event.createdAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                        <td>{{ event.updatedAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                        <td class="td-actions text-right">
+                                            <a href="{{ path('app_event_edit', {uid: event.uid}) }}" rel="tooltip" title="Modifier" class="btn btn-success btn-simple btn-xs">
+                                                <i class="ti-pencil-alt"></i>
+                                            </a>
+                                            <form style="display: inline-block;" method="post" action="{{ path('app_event_delete', {'uid': event.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cet évènement?');">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.uid) }}">
+                                                <button rel="tooltip" title="Supprimer" class="btn btn-danger btn-simple btn-xs"><i class="ti-close"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6">Pas d'évènements...</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

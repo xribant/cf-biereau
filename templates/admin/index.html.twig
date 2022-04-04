@@ -1,0 +1,73 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block sectionTitle %}Comité des fêtes du collège du Biéreau - Admin dashboard{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-warning text-center">
+
+                                        <i class="ti-user"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Utilisateurs</p>
+                                        {{ users|length }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <hr>
+                            <div class="footer-title">Voir tous les utilisateurs</div>
+                            <div class="pull-right">
+                                <a class="btn btn-default btn-fill btn-icon btn-sm" href="{{ path('app_user_index') }}">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="icon-big icon-success text-center">
+                                        <i class="ti-calendar"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <div class="numbers">
+                                        <p>Evènements planifiés</p>
+                                        {{ events|length }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <hr />
+                            <div class="footer-title">Tous les évènements</div>
+                            <div class="pull-right">
+                                <a class="btn btn-default btn-fill btn-icon btn-sm" href="{{ path('app_event_index') }}">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

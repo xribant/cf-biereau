@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <!-- Hero section -->
+    <section class="hero-section">
+        <div class="hero-slider owl-carousel">
+
+            {% for event in events %}
+                <div class="hero-item">
+                    <div class="hero-text">
+                        <div class="ht-cata">{{ event.scheduledAt|format_datetime('full', 'none',locale='fr')}}</div>
+                        <h2>{{ event.title }}</h2>
+                        <p>{{ event.description|raw }}</p>
+                        <a href="#" class="ht-btn">Plus d'infos<i class="arrow_right"></i></a>
+                    </div>
+                    <div class="hi-bg set-bg" data-setbg="{{ vich_uploader_asset(event, 'imageFile') }}"></div>
+                </div>
+            {% else %}
+                <div class="hero-item">
+                    <div class="hero-text">
+                        <div class="ht-cata">Collège du Biéreau</div>
+                        <h2>Comité des fêtes</h2>
+                        <p>Cassi – a creative lifestyle photo studio making emotional photography communicate a story. Creative lifestyle photo studio making emotional photography.</p>
+                        <a href="#" class="ht-btn">See More <i class="arrow_right"></i></a>
+                    </div>
+                    <div class="hi-bg set-bg" data-setbg="img/slider-1.jpg"></div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Hero section end -->
+{% endblock %}

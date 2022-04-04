@@ -1,0 +1,64 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block sectionTitle %}Gestion des utilisateurs{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-content table-responsive table-full-width">
+                            <div class="toolbar">
+                                <!--Here you can write extra buttons/actions for the toolbar-->
+                                <a class="btn btn-primary btn-fill btn-wd" href="{{ path('app_user_new') }}">Nouveau</a>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Username</th>
+                                    <th>Création</th>
+                                    <th>Modifié</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <td class="text-center">{{ loop.index }}</td>
+                                    <td>{{ user.firstName }} {{ user.lastName }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.createdAt ? user.createdAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                    <td>{{ user.updatedAt ? user.updatedAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                                    <td class="td-actions text-right">
+                                        <a href="{{ path('app_user_edit', {uid: user.uid}) }}" rel="tooltip" title="Modifier" class="btn btn-success btn-simple btn-xs">
+                                            <i class="ti-pencil-alt"></i>
+                                        </a>
+                                        <form style="display: inline-block;" method="post" action="{{ path('app_user_delete', {'uid': user.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cet utilisateur?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.uid) }}">
+                                            <button rel="tooltip" title="Supprimer" class="btn btn-danger btn-simple btn-xs"><i class="ti-close"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7">Pas d'utilisateur existant...</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
