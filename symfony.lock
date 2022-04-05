@@ -113,11 +113,35 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.6.0"
     },
+    "google/recaptcha": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.1",
+            "ref": "e5a4aa21f2e98d7440ae9aab6b56e307f99dd084"
+        },
+        "files": [
+            "config/packages/google_recaptcha.yaml"
+        ]
+    },
     "imagine/imagine": {
         "version": "1.3.1"
     },
     "jms/metadata": {
         "version": "2.6.1"
+    },
+    "karser/karser-recaptcha3-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "c51ce07c10331d506762efe25b6f5843c1a5ea17"
+        },
+        "files": [
+            "config/packages/karser_recaptcha3.yaml"
+        ]
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
@@ -140,6 +164,18 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "php-flasher/flasher": {
+        "version": "v0.9.8"
+    },
+    "php-flasher/flasher-symfony": {
+        "version": "v0.9.8"
+    },
+    "php-flasher/flasher-toastr": {
+        "version": "v0.9.8"
+    },
+    "php-flasher/flasher-toastr-symfony": {
+        "version": "v0.9.8"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"

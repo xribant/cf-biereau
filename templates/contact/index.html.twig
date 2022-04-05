@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous{% endblock %}
+
+{% block content %}
+    <!-- Contact section -->
+    <section class="contact-section">
+        <div class="contact-warp set-bg" data-setbg="img/blog/big.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="contact-info">
+                            <h4>Informations</h4>
+                            <div class="ci-item"><i class="icon_mail"></i>info@cfbiereau.be</div>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Adresse du Collège</h4>
+                            <div class="ci-item"><i class="icon_pin"></i>Rue du Collège 2, 1348 Ottignies-Louvain-la-Neuve</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'contact-form'}}) }}
+                        {{ form_row(form._token) }}
+                        <form action="" method="post">
+                            {{ form_row(form.name) }}
+                            {{ form_row(form.email) }}
+                            {{ form_row(form.message) }}
+                            {{ form_row(form.captcha) }}
+                            <button class="site-btn">Envoyer</button>
+                        </form>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact section end -->
+{% endblock %}
