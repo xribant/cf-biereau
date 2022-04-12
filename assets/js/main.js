@@ -5,12 +5,17 @@
 --------------------------------------
 ======================================*/
 
-
 'use strict';
 
+AOS.init({
+	duration: 800,
+	easing: 'slide'
+});
+
 $(window).on('load', function() {
+
 	/*------------------
-		Preloder
+		Preloader
 	--------------------*/
 	$(".loader").fadeOut();
 	$("#preloder").delay(400).fadeOut("slow");

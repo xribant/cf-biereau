@@ -1,93 +1,45 @@
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-    <title>CF Biéreau | Authentification</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}"/>
-    <!-- Main Stylesheets -->
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
 
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-<body>
-
-<div class="auth-wrapper">
-    <div class="container-fluid h-100">
-        <div class="row flex-row h-100 bg-white">
-            <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                <div class="lavalite-bg" style="background-image: url('{{ asset('images/login_bckg.jpeg') }}')">
-                    <div class="lavalite-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
-                <div class="authentication-form mx-auto">
-                    <div class="logo-centered">
-                        <img src="{{ asset('img/logo-cf.png') }}" alt="Logo My Club">
+{% block content %}
+    <!-- Contact section -->
+    <section class="contact-section mt-5">
+        <div class="contact-warp set-bg" data-setbg="{{ asset('img/contact_bg.jpeg') }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="contact-info">
+                            <h4>Connectez-vous</h4>
+                        </div>
+                        <div class="contact-info">
+                            <img src="{{ asset('img/logo-cf.png') }}" alt="">
+                        </div>
                     </div>
-                    <h3>Connexion</h3>
+                    <div class="col-lg-7">
+                        <form method="post" action="" class="contact-form">
 
-                    <form method="post">
-                        {% if error %}
-                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                        {% endif %}
-                        <div class="form-group">
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur" autocomplete="email" required autofocus value="{{ last_username }}">
-                            <i class="ik ik-user"></i>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" autocomplete="current-password" required>
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            <label for="username">Nom d'utilisateur:</label>
+                            <input type="text" name="username" id="username" class="form-control" autocomplete="email" required value="{{ last_username }}">
+                            <label for="inputPassword">Mot de passe:</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                            <i class="ik ik-lock"></i>
-                        </div>
-                        <div class="row">
-                            <div class="col text-left">
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="item_checkbox" name="_remember_me" checked>
-                                    <span class="custom-control-label">&nbsp;Se souvenir de moi</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="sign-btn text-center">
-                            <button class="btn btn-danger" type="submit">Connexion</button>
-                        </div>
-                    </form>
+
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="item_checkbox" name="_remember_me" checked>
+                                <span class="custom-control-label">&nbsp;Se souvenir de moi</span>
+                            </label>
+                            <button class="site-btn" type="submit">Connexion</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Footer section -->
-<footer class="footer-section">
-    <div class="footer-social">
-        <a href="#">Facebook</a>
-    </div>
-    <div class="copyright"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tous droits réservés | Comité des fêtes du collège du Biéreau
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-</footer>
-<!-- Footer section end -->
-
-<!--====== Javascripts & Jquery ======-->
-<script src="{{ asset('js/vendor/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
+    </section>
+    <!-- Contact section end -->
 {% endblock %}
-
-</body>
-</html>

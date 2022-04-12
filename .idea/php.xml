@@ -119,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/php-flasher/flasher-symfony" />
       <path value="$PROJECT_DIR$/vendor/php-flasher/flasher-toastr-symfony" />
       <path value="$PROJECT_DIR$/vendor/php-flasher/flasher-toastr" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

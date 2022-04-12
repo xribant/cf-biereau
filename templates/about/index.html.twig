@@ -1,20 +1,117 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AboutController!{% endblock %}
+{% block title %}Le comité{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
+    <!-- Page top section -->
+    <div class="page-top-section">
+        <div class="page-top-warp set-bg" data-setbg="{{ asset('img/about_bg.jpeg') }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h2>CF pour les intimes</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page top section end -->
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/xavier/Sites/cf-biereau/src/Controller/AboutController.php'|file_link(0) }}">src/Controller/AboutController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/xavier/Sites/cf-biereau/templates/about/index.html.twig'|file_link(0) }}">templates/about/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!-- About section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row about-item" data-aos="fade-up">
+                <div class="col-lg-3">
+                    <h2>Qui sommes nous?</h2>
+                </div>
+                <div class="col-lg-9">
+                    <div class="ai-text">
+                        <h4>Une bandes de parents, de professeurs et membres de l’équipe du Collège, dont la convivialité, l’accueil et l’intégration des familles est notre motivation.</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row about-item">
+                <div class="col-lg-3" data-aos="fade-right">
+                    <h2>Que faisons nous?</h2>
+                </div>
+                <div class="col-lg-9" data-aos="fade-left">
+                    <div class="ai-text">
+                        <h4>Nous tentons d’améliorer le quotidien de nos enfants et des enseignants dans la joie, la bonne humeur en organisant la vie festive de notre école.</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row about-item" data-aos="fade-up">
+                <div class="col-lg-3">
+                    <h2>Comment?</h2>
+                </div>
+                <div class="col-lg-9">
+                    <div class="ai-text">
+                        <h4>Soirée Halloween</h4>
+                        <h4>Quiz Musical</h4>
+                        <h4>Fête des enfants</h4>
+                        <h4>Journée travaux</h4>
+                        <h4>Opération pommes</h4>
+                        <h4>Marche Adeps</h4>
+                        <h4>Vente de sapins de Noël</h4>
+                        <h4>Carnaval du Blan T’Chfau</h4>
+                        <h4>Brocante</h4>
+                        <h4>Actions particulières</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row about-item" data-aos="fade-up">
+                <div class="col-lg-3" style="background-image: url('{{ asset('img/about-img1.png') }}'); background-repeat: no-repeat; background-size: cover; border-radius: 3px;">
+                </div>
+                <div class="col-lg-9">
+                    <div class="ai-text">
+                        <h4>Cela nous permet de prendre en charge</h4>
+                        <p>
+                            - les travaux de début d’année<br>
+                            - la Saint-Nicolas<br>
+                            - les livres du CEB offerts au 6e primaire<br>
+                            - le sable du bac à sable<br>
+                            - les copeaux des 3e Maternelle<br>
+                            - les espaces verts<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row about-item" data-aos="fade-up">
+                <div class="col-lg-3" style="background-image: url('{{ asset('img/about-img2.png') }}'); background-repeat: no-repeat; background-size: cover; border-radius: 3px;">
+                </div>
+                <div class="col-lg-9">
+                    <div class="ai-text">
+                        <h4>Cela vous a permis également d'investir dans</h4>
+                        <p>
+                            - la salle de gym<br>
+                            - les modules de jeux en maternelles et en primaires<br>
+                            - les malles de jeux, livres, …<br>
+                            - les tableaux interactifs<br>
+                            - des gobelets réutilisables<br>
+                            - le coin calme et les tables en bois<br>
+                            - les peinture au sol et sur les murs<br>
+                            - des bancs, des chaises<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row about-item" data-aos="fade-up">
+                <div class="col-lg-3" style="background-image: url('{{ asset('img/batiment_mat.jpeg') }}'); background-repeat: no-repeat; background-size: cover; border-radius: 3px;">
+                </div>
+                <div class="col-lg-9">
+                    <div class="ai-text">
+                        <h4>Le CF participe également au financement du bâtiment passif (6000€/an) et de l’AP (+/- 1500€/an) et à l'avenir :</h4>
+                        <p>
+                            - rénovation des toilettes en primaire<br>
+                            - rampe à vélos<br>
+                            - aménagement de la mare<br>
+                            - Remplacement des poubelles (cours
+                                primaire et maternelle)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About section end -->
 {% endblock %}

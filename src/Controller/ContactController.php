@@ -28,8 +28,8 @@ class ContactController extends AbstractController
 
             $email = (new TemplatedEmail())
                 ->from('admin@cfbiereau.be')
-                ->to(new Address('xavier@mywebcreation.be'))
-                ->subject('Nouveau message')
+                ->to(new Address('xribant@gmail.com'))
+                ->subject('[cfbiereau.be]: Formulaire de contact')
                 ->htmlTemplate('mails/index.html.twig')
                 ->context([
                     'contact' => $contact
@@ -52,6 +52,7 @@ class ContactController extends AbstractController
 
             } catch (TransportExceptionInterface $e) {
                 echo $e->getMessage();
+
             }
 
         }

@@ -122,6 +122,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher-symfony" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher-toastr-symfony" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-flasher/flasher-toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/apache-pack" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

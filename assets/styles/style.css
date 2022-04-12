@@ -210,6 +210,11 @@ ul, ol {
 	left: 0;
 	padding: 24px 35px 14px 40px;
 }
+
+.menu-header img {
+	height: 15rem;
+}
+
 .main-menu {
 	list-style: none;
 	display: inline-block;
@@ -266,6 +271,14 @@ ul, ol {
 @media (max-width: 576px) {
 	.main-menu li a {
 		font-size: 30px;
+	}
+
+	.menu-header img {
+		height: 8rem;
+	}
+
+	.header-section img {
+		height: 2rem;
 	}
 }
 .main-menu li a:hover, .main-menu li a.active {
@@ -839,7 +852,7 @@ ul, ol {
 }
 
 .gallery-filter {
-	list-style: none;
+	text-decoration: none;
 	float: left;
 }
 
@@ -850,7 +863,7 @@ ul, ol {
 	}
 }
 
-.gallery-filter li {
+.gallery-filter a {
 	display: inline-block;
 	font-size: 18px;
 	font-weight: 500;
@@ -858,6 +871,12 @@ ul, ol {
 	margin-left: 35px;
 	cursor: pointer;
 }
+
+.gallery-filter a:hover, a:active {
+	color: #242deb;
+}
+
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.gallery-filter li {

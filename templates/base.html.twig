@@ -8,12 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/accordion.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/fresco.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}"/>
+
+    <!-- Light Gallery -->
+    <link rel="stylesheet" href="{{ asset('lg/css/lightgallery.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('lg/css/lg-zoom.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('lg/css/lg-thumbnail.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('lg/css/lg-fullscreen.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('lg/css/lg-share.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('lg/css/justifiedGallery.css') }}"/>
+
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('img/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('img/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -35,7 +54,7 @@
     <div class="offcanvas-menu-wrapper">
         <div class="menu-header">
             <a href="{{ path('app_home') }}" class="site-logo">
-                <img src="{{ asset('img/logo-cf-white.png') }}" alt="logo CF">
+                <img src="{{ asset('img/logo-cf.png') }}" alt="">
             </a>
             <div class="menu-switch" id="menu-canvas-close">
                 <i class="icon_close"></i>
@@ -43,8 +62,8 @@
         </div>
         <ul class="main-menu">
             <li><a href="{{ path('app_home') }}" {% if active_menu == 'home' %}class="active"{% endif %}>Accueil</a></li>
-            <li><a href="#">Le comité</a></li>
-            <li><a href="{{ path('app_front_gallery') }}" {% if active_menu == 'gallery' %}class="active"{% endif %}>Photos</a></li>
+            <li><a href="{{ path('app_about') }}" {% if active_menu == 'about' %}class="active"{% endif %}>A propos</a></li>
+            <li><a href="{{ path('app_front_galleries') }}" {% if active_menu == 'gallery' %}class="active"{% endif %}>Photos</a></li>
             <li><a href="{{ path('app_contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a></li>
         </ul>
         <div class="menu-footer">
@@ -62,7 +81,7 @@
     <!-- Header section -->
     <header class="header-section">
         <a href="{{ path('app_home') }}" class="site-logo">
-            <img src="{{ asset('img/logo-cf-white.png') }}" alt="logo CF">
+            <img src="{{ asset('img/cf_outlined.png') }}" alt="">
         </a>
         <div class="menu-switch" id="menu-canvas-show">
             <i class="icon_menu"></i>
@@ -96,6 +115,52 @@
     <script src="{{ asset('js/pana-accordion.js') }}"></script>
     <script src="{{ asset('js/fresco.min.js') }}"></script>
     <script src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/justifiedGallery.min.js') }}"></script>
+    <script src="{{ asset('js/lightgallery.min.js') }}"></script>
+    <script src="{{ asset('lg/lightgallery.min.js') }}"></script>
+    <script src="{{ asset('lg/plugins/thumbnail/lg-thumbnail.min.js') }}"></script>
+    <script src="{{ asset('lg/plugins/share/lg-share.min.js') }}"></script>
+    <script src="{{ asset('lg/plugins/rotate/lg-rotate.min.js') }}"></script>
+    <script src="{{ asset('lg/plugins/autoplay/lg-autoplay.min.js') }}"></script>
+    <script src="{{ asset('lg/plugins/fullscreen/lg-fullscreen.min.js') }}"></script>
+    <script src="{{ asset('lg/plugins/zoom/lg-zoom.min.js') }}"></script>
+    <script src="{{ asset('lg/justifiedGallery.min.js') }}"></script>
+    <script>
+        $("#animated-thumbnails-gallery")
+            .justifiedGallery({
+                captions: false,
+                lastRow: "hide",
+                rowHeight: 180,
+                margins: 5,
+                maxRowsCount: 5
+            })
+            .on("jg.complete", function () {
+                lightGallery(document.getElementById("animated-thumbnails-gallery"), {
+                    autoplayFirstVideo: false,
+                    pager: false,
+                    galleryId: "nature",
+                    flipHorizontal: false,
+                    flipVertical: false,
+                    rotateLeft: false,
+                    numberOfSlideItemsInDom: 10,
+                    plugins: [
+                        lgZoom,
+                        lgThumbnail,
+                        lgShare,
+                        lgRotate,
+                        lgFullscreen,
+                        lgAutoplay
+                    ],
+                    mobileSettings: {
+                        controls: false,
+                        showCloseIcon: false,
+                        download: false,
+                        rotate: false
+                    }
+                });
+            });
+    </script>
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
